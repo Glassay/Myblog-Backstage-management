@@ -4,11 +4,19 @@
  */
 
 import React from 'react';
+import SingleArticle from './SingleArticle';
 
 class ArticleManagement extends React.Component {
   render() {
     return(
-      <div>qweqweqw</div>
+      <div>
+        <SingleArticle />
+        <SingleArticle />
+        <SingleArticle />
+        <SingleArticle />
+        <SingleArticle />
+        <SingleArticle />
+      </div>
     )
   }
 }

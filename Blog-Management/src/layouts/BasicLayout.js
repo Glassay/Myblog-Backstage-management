@@ -45,7 +45,7 @@ class BasicLayout extends React.Component {
             </Menu>
           </Sider>
           <Layout style={{ padding: '0 24px 24px' }}>
-            <Content style={{ background: '#fff', padding: 24, margin: 10, minHeight: 280 }}>
+            <Content style={{ background: '#f0f2f5', padding: 24, margin: 10, minHeight: 280 }}>
               <Switch>
                 <Route path="/main/editor" render={() => <MyEditor />} />
                 <Route path="/main/management" render={() => <ArticleManagement />} />
