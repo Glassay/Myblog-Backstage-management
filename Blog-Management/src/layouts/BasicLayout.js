@@ -5,6 +5,8 @@
 
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
+import MyEditor from '../routes/MyEditor';
+// import marked from 'marked';
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
@@ -26,8 +28,7 @@ class BasicLayout extends React.Component {
             >
               <SubMenu key="sub1" title={<span><Icon type="edit" />写文章</span>}>
                 <Menu.Item key="1">新建文章</Menu.Item>
-                <Menu.Item key="2">修改文章</Menu.Item>
-                <Menu.Item key="3">删除文章</Menu.Item>
+                <Menu.Item key="2">管理文章</Menu.Item>
               </SubMenu>
               <SubMenu key="sub2" title={<span><Icon type="laptop" />主界面信息修改</span>}>
                 <Menu.Item key="1">头部信息</Menu.Item>
@@ -39,7 +40,7 @@ class BasicLayout extends React.Component {
           </Sider>
           <Layout style={{ padding: '0 24px 24px' }}>
             <Content style={{ background: '#fff', padding: 24, margin: 10, minHeight: 280 }}>
-              Content
+              <MyEditor />
             </Content>
           </Layout>
         </Layout>

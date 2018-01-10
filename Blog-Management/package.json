@@ -10,8 +10,11 @@
     "antd": "^3.1.1",
     "babel-plugin-import": "^1.6.3",
     "dva": "^2.1.0",
+    "highlight.js": "^9.12.0",
+    "marked": "^0.3.12",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "simplemde": "^1.11.2"
   },
   "devDependencies": {
     "babel-plugin-dva-hmr": "^0.3.2",
