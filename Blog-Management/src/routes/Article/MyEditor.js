@@ -8,6 +8,7 @@ import SimpleMDE from 'simplemde'
 import marked from 'marked';
 import highlight from 'highlight.js';
 import styles from './MyEdtor.less';
+import '/Users/a8/github/React/Myblog-Backstage-management/Blog-Management/node_modules/highlight.js/styles/atom-one-dark.css';
 
 class MyEditor extends React.Component {
   componentDidMount() {
