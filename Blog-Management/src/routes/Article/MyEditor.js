@@ -45,6 +45,15 @@ class MyEditor extends React.Component {
             ref={(input) => {this.input = input}}
           />
         </div>
+
+        <div className={styles.head}>
+          <input
+            style={{ marginBottom: 30 }}
+            placeholder="文章标签"
+            ref={(input) => {this.input = input}}
+          />
+        </div>
+
         <div>
           <textarea
             id="editor"
