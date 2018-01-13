@@ -10,8 +10,6 @@ export default {
   namespace: 'login',
 
   state: {
-    username: '',
-    passward: '',
   },
 
   effects: {
@@ -32,19 +30,6 @@ export default {
   },
 
   reducers: {
-    writeUsername(state, { payload }) {
-      return {
-        ...state,
-        username: payload.target.value,
-      };
-    },
-
-    writePassward(state, { payload }) {
-      return {
-        ...state,
-        passward: payload.target.value
-      }
-    }
   },
 }
 

@@ -1,3 +1,7 @@
+/**
+ * 2018-1-11 Jifeng CHeng
+ */
+
 import axios from 'axios'
 import qs from 'qs'
 import HttpStatus from 'http-status-codes'

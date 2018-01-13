@@ -1,3 +1,7 @@
+/**
+ * 2018-1-11 Jifeng Cheng
+ */
+
 import request from '../utils/request';
 
 export async function createAdmin() {

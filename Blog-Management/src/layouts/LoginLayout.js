@@ -13,9 +13,8 @@ const FormItem = Form.Item;
 
 class LoginLayout extends React.Component {
   render() {
-    const { login, dispatch } = this.props
-    console.log('username.....', login.username);
-    console.log('passward.....', login.passward);
+    const { dispatch } = this.props
+    // console.log('passward.....', Input);
     // 1.完整写法
     // (async ()=>{
     //   try {
@@ -38,8 +37,7 @@ class LoginLayout extends React.Component {
                 prefix={<Icon type="user"
                 style={{ color: 'rgba(0,0,0,.25)' }} />}
                 placeholder="Username"
-                value={login.username}
-                onChange={e => dispatch({ type: 'login/writeUsername', payload: e })}
+                id="username"
                 />
             </FormItem>
             <FormItem>
@@ -47,8 +45,7 @@ class LoginLayout extends React.Component {
                 prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                 type="password"
                 placeholder="Password"
-                value={login.passward}
-                onChange={e => dispatch({ type: 'login/writePassward', payload: e })}
+                id="passward"
               />
             </FormItem>
             <FormItem>
@@ -63,17 +60,9 @@ class LoginLayout extends React.Component {
             </FormItem>
           </Form>
         </Content>
-        {/* <Footer style={{ textAlign: 'center' }}>
-          Copyright ©2016 Created by Chengjifeng
-        </Footer> */}
       </Layout>
     )
   }
 }
 
 export default connect(({login}) => ({login}))(LoginLayout);
-// export default connect(state => ({
-//   username: state.login.username,
-//   passward: state.login.passward,
-// })
-// )(LoginLayout)

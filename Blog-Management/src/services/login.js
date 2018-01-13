@@ -8,15 +8,20 @@ import axios from 'axios';
 //   return request({
 //     url: '/adminLogin',
 //     method: 'post',
-//     data: params,
+//     data: {
+//       name: params.username,
+//       passward: params.passward,
+//     },
 //   });
-//   console.log('params.....',params);
+//   console.log('params.....',params.data);
 // }
 
 export async function AdminLogin(payload) {
+  const inputUsername = document.getElementById('username').value;
+  const inputPassward = document.getElementById('passward').value;
   const response = await axios.post('http://10.0.0.48:8080/adminLogin', {
-    name: payload.username,
-    password: payload.passward,
+    name: inputUsername,
+    password: inputPassward,
   })
 
   return response.data
