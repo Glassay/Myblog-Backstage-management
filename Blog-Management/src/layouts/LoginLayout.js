@@ -12,8 +12,20 @@ const { Content } = Layout;
 const FormItem = Form.Item;
 
 class LoginLayout extends React.Component {
+  handleSubmit = () => {
+    const inputUsername = document.getElementById('username').value;
+    const inputPassward = document.getElementById('passward').value;
+    const params = {
+      name: inputUsername,
+      password: inputPassward,
+    }
+    this.props.dispatch({
+      type: 'login/adminLogin',
+      payload: params
+    })
+  }
   render() {
-    const { dispatch } = this.props
+    // const { dispatch } = this.props
     // console.log('passward.....', Input);
     // 1.完整写法
     // (async ()=>{
@@ -54,7 +66,9 @@ class LoginLayout extends React.Component {
                 type="primary"
                 htmlType="submit"
                 className={styles.login_form_button}
-                onClick={() => dispatch({ type: 'login/adminLogin'})}>
+                // onClick={() => dispatch({ type: 'login/adminLogin'})}
+                onClick={this.handleSubmit}
+              >
                 Log in
               </Button>
             </FormItem>

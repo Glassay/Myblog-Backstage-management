@@ -14,9 +14,8 @@ export default {
 
   effects: {
     *adminLogin({ payload }, { call, put, select}) {
-      const login = yield select(state => state.login);
-      console.log('login+++++', login)
-      const result = yield call(AdminLogin, login);
+      console.log('qweqwe', payload)
+      const result = yield call(AdminLogin, payload);
       console.log('result....', result.status)
       if (result.status === 'success') {
         yield put(routerRedux.push('/main'))
