@@ -18,7 +18,7 @@ export default {
       const result = yield call(AdminLogin, payload);
       console.log('result....', result.status)
       if (result.status === 'success') {
-        yield put(routerRedux.push('/main'))
+        yield put(routerRedux.push('/main/editor'))
       } else if (result.status === 'not found user'){
         message.error('用户名不存在！')
       } else {
