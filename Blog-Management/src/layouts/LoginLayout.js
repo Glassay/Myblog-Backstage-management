@@ -66,7 +66,6 @@ class LoginLayout extends React.Component {
                 type="primary"
                 htmlType="submit"
                 className={styles.login_form_button}
-                // onClick={() => dispatch({ type: 'login/adminLogin'})}
                 onClick={this.handleSubmit}
               >
                 Log in

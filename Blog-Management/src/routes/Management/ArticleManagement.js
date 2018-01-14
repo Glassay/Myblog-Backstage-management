@@ -4,9 +4,15 @@
  */
 
 import React from 'react';
+import { connect } from 'dva';
 import SingleArticle from './SingleArticle';
 
 class ArticleManagement extends React.Component {
+  componentWillMount() {
+    this.props.dispatch({
+      type: 'article/showArticle',
+    })
+  }
   render() {
     return(
       <div>
@@ -21,5 +27,5 @@ class ArticleManagement extends React.Component {
   }
 }
 
-export default ArticleManagement;
+export default connect(({ article }) => ({ article }))(ArticleManagement);
 

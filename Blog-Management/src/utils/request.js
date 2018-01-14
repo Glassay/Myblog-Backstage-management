@@ -12,6 +12,7 @@ import HttpStatus from 'http-status-codes'
 
 axios.defaults.baseURL = "http://10.0.0.48:8080";
 axios.defaults.timeout = 10000;
+axios.defaults.withCredentials = true;
 
 const fetch = (options) => {
   let {
@@ -44,7 +45,7 @@ export default function request (options) {
     if (response.status === HttpStatus.OK) {
       return response.data
     }
-    throw { response }
+    throw { response } // eslint-disable-line
   }).catch((error) => {
     const { response } = error;
     console.log('request error: ', error);
@@ -57,7 +58,7 @@ export default function request (options) {
       status = 600
       message = 'Network Error'
     }
-    throw { status, message }
+    throw { status, message } // eslint-disable-line
   })
 }
 

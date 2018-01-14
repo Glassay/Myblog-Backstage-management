@@ -8,6 +8,9 @@ import { Tag, Button, Card } from 'antd';
 import styles from './ArticleManagement.less';
 
 class SingleArticle extends React.Component {
+  componentWillMount() {
+    
+  }
   render() {
     return(
       <div style={{ margin: '10px'}}>
