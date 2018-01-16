@@ -13,9 +13,9 @@ export default {
 
   effects: {
     *showArticle({payload}, { call, put }) {
-      const params = getArticle.data
-      console.log('adasdasdsada', params)
-      const response = yield call(getArticle, params);
+      // const params = getArticle.data
+      console.log('adasdasdsada')
+      const response = yield call(getArticle);
       console.log('response......', response);
       yield put({
         type: 'getArticles',
@@ -25,10 +25,10 @@ export default {
   },
 
   reducers: {
-    getArticles(state, {payload}) {
+    getArticles(state, action) {
       return{
         ...state,
-        Article: payload,
+        Article: action.payload,
       }
     }
   }

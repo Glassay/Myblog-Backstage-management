@@ -4,28 +4,30 @@
  */
 
 import React from 'react';
-import { connect } from 'dva';
+// import { connect } from 'dva';
 import SingleArticle from './SingleArticle';
 
 class ArticleManagement extends React.Component {
-  componentWillMount() {
-    this.props.dispatch({
-      type: 'article/showArticle',
-    })
-  }
+  // componentWillMount() {
+  //   this.props.dispatch({
+  //     type: 'article/showArticle',
+  //   })
+  // }
   render() {
+    console.log('测试..........')
+    // const { Article } = this.props;
+    // console.log('ddddddddddddddd', Article);
     return(
       <div>
-        <SingleArticle />
-        <SingleArticle />
-        <SingleArticle />
-        <SingleArticle />
-        <SingleArticle />
         <SingleArticle />
       </div>
     )
   }
 }
 
-export default connect(({ article }) => ({ article }))(ArticleManagement);
+export default ArticleManagement;
+// export default connect(({ article }) => ({ article }))(ArticleManagement);
+// export default connect(state => ({
+//   Article: state.article.Article,
+// }))(ArticleManagement);
 

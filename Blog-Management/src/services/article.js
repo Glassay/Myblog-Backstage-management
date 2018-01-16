@@ -5,7 +5,6 @@
 import request from '../utils/request';
 
 export async function getArticle(params) {
-  console.log('article...........', params);
   return request({
     url: '/readAll',
     method: 'get',
