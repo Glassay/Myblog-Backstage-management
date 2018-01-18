@@ -10,7 +10,7 @@ import HttpStatus from 'http-status-codes'
 //   requestTimeOut
 // }                 from './config'
 
-axios.defaults.baseURL = "http://10.0.0.48:8080";
+axios.defaults.baseURL = "http://10.0.0.23:8080";
 axios.defaults.timeout = 10000;
 axios.defaults.withCredentials = true;
 

@@ -9,6 +9,7 @@ export default {
 
   state: {
     Article: [],
+    loading: false,
   },
 
   effects: {

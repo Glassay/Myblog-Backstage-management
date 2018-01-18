@@ -54,4 +54,5 @@ class SingleArticle extends React.Component {
 
 export default connect(state => ({
   Article: state.article.Article,
+  loading: state.loading.global,
 }))(SingleArticle);
