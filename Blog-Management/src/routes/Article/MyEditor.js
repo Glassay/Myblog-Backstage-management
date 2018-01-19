@@ -16,7 +16,8 @@ class MyEditor extends React.Component {
   handleSubmit = () => {
     const inputArticle = {
       titleInput: document.getElementById('title').value,
-      labelInput: document.getElementById('label').value,
+      label1Input: document.getElementById('label1').value,
+      label2Input: document.getElementById('label2').value,
       contentInput: this.smde.value(),
     }
     console.log('dadddddddddd', inputArticle.contentInput)
@@ -70,8 +71,13 @@ class MyEditor extends React.Component {
         <div className={styles.head}>
           <input
             style={{ marginBottom: 30 }}
-            placeholder="文章标签"
-            id="label"
+            placeholder="文章标签1"
+            id="label1"
+          />
+          <input
+            style={{ marginBottom: 30 }}
+            placeholder="文章标签2"
+            id="label2"
           />
         </div>
 

@@ -6,7 +6,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import { Tag, Button, Card } from 'antd';
-import styles from './ArticleManagement.less';
+import styles from './SingleArticle.less';
 
 class SingleArticle extends React.Component {
   componentWillMount() {
@@ -18,23 +18,33 @@ class SingleArticle extends React.Component {
     const { Article } = this.props;
     console.log('结果。。。。。111', Article.data);
     console.log('结果。。111', Article);
+    // const singleLabel = this.props.Article
     return(
       <div>
         {
           Article.data === undefined ? null : Article.data.map(item => (
+            console.log('asdasd', item.Label),
             <div key={item.Id} style={{ margin: '10px'}}>
               <Card>
+                { item.Label === '' ? 
+                <div>
+                  <div>
+                    <h2>{item.Title}</h2>
+                  </div>
+                  <hr />
+                  <p className={styles.article}>{item.Content}</p>
+                </div> : 
                 <div>
                   <div>
                     <h2>{item.Title}</h2>
                     <div className={styles.tag}>
                       <Tag color="#2db7f5">{item.Label}</Tag>
-                      <Tag color="#87d068">{item.Label}</Tag>
                     </div>
                   </div>
                   <hr />
-                  <p>{item.content}</p>
+                  <p className={styles.article}>{item.Content}</p>
                 </div>
+                }
                 <div className={styles.tag}>
                   <div>
                     <Button type="primary" size="small" className={styles.button}>删除</Button>

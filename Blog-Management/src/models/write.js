@@ -16,7 +16,8 @@ export default {
       console.log('article.......', payload)
       const params = {
         title: payload.data.titleInput,
-        label: payload.data.labelInput,
+        label1: payload.data.labelInput1,
+        label2: payload.data.labelInput2,
         content: payload.data.contentInput,
       }
       const response = yield call(uploadArticle, params);
