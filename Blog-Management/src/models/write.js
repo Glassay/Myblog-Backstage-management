@@ -16,11 +16,13 @@ export default {
       console.log('article.......', payload)
       const params = {
         title: payload.data.titleInput,
-        label1: payload.data.labelInput1,
-        label2: payload.data.labelInput2,
+        label1: payload.data.label1Input,
+        label2: payload.data.label2Input,
         content: payload.data.contentInput,
       }
+
       const response = yield call(uploadArticle, params);
+      
       console.log('1111111', response);
       if (response.status === 'success') {
         message.success('成功！')

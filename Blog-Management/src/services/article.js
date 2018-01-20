@@ -12,6 +12,14 @@ export async function getArticle(params) {
   })
 }
 
+export async function deleteArticle(params) {
+  return request({
+    url: '/delete',
+    method: 'post',
+    data: params,
+  })
+}
+
 // import axios from 'axios';
 
 // export async function getArticles(payload) {

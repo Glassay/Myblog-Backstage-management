@@ -31,11 +31,15 @@ class MyEditor extends React.Component {
       payload: params,
     })
   }
+  
   componentDidMount() {
     this.smde = new SimpleMDE({
-      element: document.getElementById('editor').childElementCount,  
+      element: document.getElementById('editor'), 
+      indentWithTabs: false,
+      tabSize: 4,
+      status: ["autosave", "lines", "words", "cursor"],
       // autofocus: true,
-      autosave: true,
+      // autosave: true,
       previewRender: function(plainText) {
         return marked(plainText,{
           renderer: new marked.Renderer(),
@@ -53,7 +57,7 @@ class MyEditor extends React.Component {
       },
     })
 
-    this.input.focus();
+    // this.input.focus();
   }
   render() {
     // const { dispatch } = this.props;

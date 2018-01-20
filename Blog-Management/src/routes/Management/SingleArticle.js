@@ -5,13 +5,33 @@
 
 import React from 'react';
 import { connect } from 'dva';
+import marked from 'marked';
+import highlight from 'highlight.js';
 import { Tag, Button, Card } from 'antd';
 import styles from './SingleArticle.less';
+import '/Users/a8/github/React/Myblog-Backstage-management/Blog-Management/node_modules/highlight.js/styles/atom-one-dark.css';
 
 class SingleArticle extends React.Component {
   componentWillMount() {
     this.props.dispatch({
       type: 'article/showArticle',
+    })
+    marked.setOptions({
+      highlight: code => highlight.highlightAuto(code).value,
+    });
+
+  }
+
+  handleClick = () => {
+    const articleId = this.props.Article.data.Id;
+
+    const params = {
+      data: articleId,
+    }
+    
+    this.props.dispatch({
+      type: 'article/delete',
+      payload: params,
     })
   }
   render() {
@@ -26,7 +46,7 @@ class SingleArticle extends React.Component {
             console.log('asdasd', item.Label),
             <div key={item.Id} style={{ margin: '10px'}}>
               <Card>
-                { item.Label === '' ? 
+                {/* { item.Label === '' ? 
                 <div>
                   <div>
                     <h2>{item.Title}</h2>
@@ -42,9 +62,20 @@ class SingleArticle extends React.Component {
                     </div>
                   </div>
                   <hr />
-                  <p className={styles.article}>{item.Content}</p>
+                  <p className={styles.article}>{marked(item.Content)}</p>
                 </div>
-                }
+                } */}
+                <div>
+                  <div>
+                    <h2>{item.Title}</h2>
+                    <div className={styles.tag}>
+                      <Tag color="#2db7f5">{item.Label1}</Tag>
+                      <Tag color="#2db7f5">{item.Label2}</Tag>
+                    </div>
+                  </div>
+                  <hr />
+                  <div dangerouslySetInnerHTML={{ __html: marked(item.Content) }}/>
+                </div>
                 <div className={styles.tag}>
                   <div>
                     <Button type="primary" size="small" className={styles.button}>删除</Button>
