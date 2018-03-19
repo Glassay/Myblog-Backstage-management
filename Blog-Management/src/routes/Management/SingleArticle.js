@@ -19,31 +19,31 @@ class SingleArticle extends React.Component {
     marked.setOptions({
       highlight: code => highlight.highlightAuto(code).value,
     });
-
   }
 
-  handleClick = () => {
+  handleDelete = () => {
     const articleId = this.props.Article.data.Id;
-
+    console.log('articleId......', articleId)
+    console.log('this.props.article.data......', this.props.Article.data)
     const params = {
       data: articleId,
     }
-    
+
     this.props.dispatch({
-      type: 'article/delete',
+      type: 'article/deleteArticle',
       payload: params,
     })
   }
   render() {
     const { Article } = this.props;
-    console.log('结果。。。。。111', Article.data);
-    console.log('结果。。111', Article);
+    console.log('Article.data .......', Article.data);
+    console.log('Article....', Article);
     // const singleLabel = this.props.Article
     return(
       <div>
         {
           Article.data === undefined ? null : Article.data.map(item => (
-            console.log('asdasd', item.Label),
+            console.log('item.Label......', item.Label),
             <div key={item.Id} style={{ margin: '10px'}}>
               <Card>
                 {/* { item.Label === '' ? 
@@ -78,7 +78,12 @@ class SingleArticle extends React.Component {
                 </div>
                 <div className={styles.tag}>
                   <div>
-                    <Button type="primary" size="small" className={styles.button}>删除</Button>
+                    <Button
+                      type="primary"
+                      size="small"
+                      className={styles.button}
+                      onClick={this.handleDelete}
+                    >删除</Button>
                   </div>
                   <div>
                     <Button type="primary" size="small" className={styles.button}>修改</Button>

@@ -20,7 +20,7 @@ class MyEditor extends React.Component {
       label2Input: document.getElementById('label2').value,
       contentInput: this.smde.value(),
     }
-    console.log('dadddddddddd', inputArticle.contentInput)
+    console.log('inputContent......', inputArticle.contentInput)
 
     const params = {
       data: inputArticle,
