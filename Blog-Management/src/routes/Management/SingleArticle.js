@@ -20,51 +20,33 @@ class SingleArticle extends React.Component {
       highlight: code => highlight.highlightAuto(code).value,
     });
   }
-
-  handleDelete = () => {
-    const articleId = this.props.Article.data.Id;
-    console.log('articleId......', articleId)
-    console.log('this.props.article.data......', this.props.Article.data)
-    const params = {
-      data: articleId,
-    }
-
-    this.props.dispatch({
-      type: 'article/deleteArticle',
-      payload: params,
+  handleDelete = (Id) =>{
+    console.log('id111>>>>>>', Id);
+    console.log('data.....', this.props.Article.data)
+    this.props.Article.data.map((item) => {
+      if (item.Id === Id) {
+        console.log('item.Id++++++', item.Id)
+        this.props.dispatch({
+          type: 'article/deleteArticle',
+          payload: Id,
+        })
+      }
+      // console.log('item.id......', item.Id);
+      // console.log('item.....', item)
+      return item
     })
   }
   render() {
     const { Article } = this.props;
     console.log('Article.data .......', Article.data);
     console.log('Article....', Article);
-    // const singleLabel = this.props.Article
     return(
       <div>
         {
-          Article.data === undefined ? null : Article.data.map(item => (
-            console.log('item.Label......', item.Label),
+          Article.data === undefined ? null : Article.data.map((item, { Id }) => (
+            item.State === 1 ? null :
             <div key={item.Id} style={{ margin: '10px'}}>
               <Card>
-                {/* { item.Label === '' ? 
-                <div>
-                  <div>
-                    <h2>{item.Title}</h2>
-                  </div>
-                  <hr />
-                  <p className={styles.article}>{item.Content}</p>
-                </div> : 
-                <div>
-                  <div>
-                    <h2>{item.Title}</h2>
-                    <div className={styles.tag}>
-                      <Tag color="#2db7f5">{item.Label}</Tag>
-                    </div>
-                  </div>
-                  <hr />
-                  <p className={styles.article}>{marked(item.Content)}</p>
-                </div>
-                } */}
                 <div>
                   <div>
                     <h2>{item.Title}</h2>
@@ -82,11 +64,15 @@ class SingleArticle extends React.Component {
                       type="primary"
                       size="small"
                       className={styles.button}
-                      onClick={this.handleDelete}
+                      onClick={this.handleDelete.bind(item.Id)}
                     >删除</Button>
                   </div>
                   <div>
-                    <Button type="primary" size="small" className={styles.button}>修改</Button>
+                    <Button
+                      type="primary"
+                      size="small"
+                      className={styles.button}
+                    >修改</Button>
                   </div>
                 </div>
               </Card>
@@ -100,5 +86,4 @@ class SingleArticle extends React.Component {
 
 export default connect(state => ({
   Article: state.article.Article,
-  loading: state.loading.global,
 }))(SingleArticle);

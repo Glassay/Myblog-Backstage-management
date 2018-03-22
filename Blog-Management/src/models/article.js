@@ -12,10 +12,11 @@ export default {
   state: {
     Article: [],
     loading: false,
+    // DeleteId: [],
   },
 
   effects: {
-    *showArticle({payload}, { call, put }) {
+    *showArticle({ payload }, { call, put }) {
       // const params = getArticle.data
       console.log('adasdasdsada')
       const response = yield call(getArticle);
@@ -26,37 +27,42 @@ export default {
       })
     },
 
-    *deleteArticle({payload}, {call, put}) {
-      const params = {
-        id: payload.data.articleId,
-      }
-
-      const response = yield call(deleteArticle, params)
+    *deleteArticle({ payload }, { call, put }) {
+      console.log('payload+++++', payload)
+      // yield put({
+      //   type: 'deleteId',
+      //   payload: payload,
+      // })
+      const response = yield call(deleteArticle, payload)
       
       if(response === 0) {
         message.error('删除失败！')
       } else {
         message.success('删除成功!')
-        yield put({
-          type: 'updateArticle',
-        })
       }
     },
   },
 
   reducers: {
     getArticles(state, action) {
-      return{
+      return {
         ...state,
         Article: action.payload,
       }
     },
 
     updateArticle(state, action) {
-      return{
+      return {
         ...state,
         Article: action.payload,
       }
-    }
+    },
+
+    // deleteId(state, action) {
+    //   return {
+    //     ...state,
+    //     DeleteId: action.payload,
+    //   }
+    // }
   }
 }

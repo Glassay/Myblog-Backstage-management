@@ -12,11 +12,11 @@ export async function getArticle(params) {
   })
 }
 
-export async function deleteArticle(params) {
+export async function deleteArticle(payload) {
   return request({
     url: '/delete',
     method: 'post',
-    data: params,
+    data: payload,
   })
 }
 
