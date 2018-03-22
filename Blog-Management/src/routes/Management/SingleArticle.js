@@ -22,28 +22,17 @@ class SingleArticle extends React.Component {
   }
   handleDelete = (Id) =>{
     console.log('id111>>>>>>', Id);
-    console.log('data.....', this.props.Article.data)
-    this.props.Article.data.map((item) => {
-      if (item.Id === Id) {
-        console.log('item.Id++++++', item.Id)
-        this.props.dispatch({
-          type: 'article/deleteArticle',
-          payload: Id,
-        })
-      }
-      // console.log('item.id......', item.Id);
-      // console.log('item.....', item)
-      return item
+    this.props.dispatch({
+      type: 'article/deleteArticle',
+      payload: Id,
     })
   }
   render() {
     const { Article } = this.props;
-    console.log('Article.data .......', Article.data);
-    console.log('Article....', Article);
     return(
       <div>
         {
-          Article.data === undefined ? null : Article.data.map((item, { Id }) => (
+          Article.data === undefined ? null : Article.data.map((item) => (
             item.State === 1 ? null :
             <div key={item.Id} style={{ margin: '10px'}}>
               <Card>
@@ -64,7 +53,7 @@ class SingleArticle extends React.Component {
                       type="primary"
                       size="small"
                       className={styles.button}
-                      onClick={this.handleDelete.bind(item.Id)}
+                      onClick={this.handleDelete}
                     >删除</Button>
                   </div>
                   <div>
