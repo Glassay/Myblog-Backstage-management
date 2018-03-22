@@ -33,7 +33,7 @@ class SingleArticle extends React.Component {
       <div>
         {
           Article.data === undefined ? null : Article.data.map((item) => (
-            item.State === 1 ? null :
+            item.State === 0 ? null :
             <div key={item.Id} style={{ margin: '10px'}}>
               <Card>
                 <div>
@@ -53,7 +53,7 @@ class SingleArticle extends React.Component {
                       type="primary"
                       size="small"
                       className={styles.button}
-                      onClick={this.handleDelete}
+                      onClick={() => this.handleDelete(item.Id)}
                     >删除</Button>
                   </div>
                   <div>

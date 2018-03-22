@@ -12,7 +12,6 @@ export default {
   state: {
     Article: [],
     loading: false,
-    // DeleteId: [],
   },
 
   effects: {
@@ -29,13 +28,11 @@ export default {
 
     *deleteArticle({ payload }, { call, put }) {
       console.log('payload+++++', payload)
-      // yield put({
-      //   type: 'deleteId',
-      //   payload: payload,
-      // })
-      const response = yield call(deleteArticle, payload)
+      const id = [];
+      id.push(payload);
+      const response = yield call(deleteArticle, id)
       
-      if(response === 0) {
+      if(response === 'ErrMysql') {
         message.error('删除失败！')
       } else {
         message.success('删除成功!')
@@ -58,11 +55,11 @@ export default {
       }
     },
 
-    // deleteId(state, action) {
-    //   return {
-    //     ...state,
-    //     DeleteId: action.payload,
-    //   }
-    // }
+    deleteId(state, action) {
+      return {
+        ...state,
+        DeleteId: action.payload,
+      }
+    }
   }
 }
