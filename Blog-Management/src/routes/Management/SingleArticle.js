@@ -9,7 +9,7 @@ import marked from 'marked';
 import highlight from 'highlight.js';
 import { Tag, Button, Card } from 'antd';
 import styles from './SingleArticle.less';
-import '/Users/a8/github/React/Myblog-Backstage-management/Blog-Management/node_modules/highlight.js/styles/atom-one-dark.css';
+import '../../../node_modules/highlight.js/styles/atom-one-dark.css';
 
 class SingleArticle extends React.Component {
   componentWillMount() {
@@ -20,7 +20,7 @@ class SingleArticle extends React.Component {
       highlight: code => highlight.highlightAuto(code).value,
     });
   }
-  handleDelete = (Id) =>{
+  handleDelete = (Id) => {
     console.log('id111>>>>>>', Id);
     this.props.dispatch({
       type: 'article/deleteArticle',
