@@ -45,7 +45,8 @@ class SingleArticle extends React.Component {
                     </div>
                   </div>
                   <hr />
-                  <div dangerouslySetInnerHTML={{ __html: marked(item.Content) }}/>
+                  {/* <div dangerouslySetInnerHTML={{ __html: marked(item.Content) }}/> */}
+                  <div>{item.brief}</div>
                 </div>
                 <div className={styles.tag}>
                   <div>

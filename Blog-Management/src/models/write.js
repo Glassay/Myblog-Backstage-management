@@ -12,12 +12,13 @@ export default {
   },
 
   effects: { 
-    *articleSubmit({payload}, { call, put }) {
+    *articleSubmit({ payload }, { call, put }) {
       console.log('article.......', payload)
       const params = {
         title: payload.data.titleInput,
         label1: payload.data.label1Input,
         label2: payload.data.label2Input,
+        brief: payload.data.briefInfoInput,
         content: payload.data.contentInput,
       }
 

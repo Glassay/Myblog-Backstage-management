@@ -18,6 +18,7 @@ class MyEditor extends React.Component {
       titleInput: document.getElementById('title').value,
       label1Input: document.getElementById('label1').value,
       label2Input: document.getElementById('label2').value,
+      briefInfoInput: document.getElementById('briefInfo').value,
       contentInput: this.smde.value(),
     }
     console.log('inputContent......', inputArticle.contentInput)
@@ -38,8 +39,6 @@ class MyEditor extends React.Component {
       indentWithTabs: false,
       tabSize: 4,
       status: ["autosave", "lines", "words", "cursor"],
-      // autofocus: true,
-      // autosave: true,
       previewRender: function(plainText) {
         return marked(plainText,{
           renderer: new marked.Renderer(),
@@ -56,11 +55,8 @@ class MyEditor extends React.Component {
         });
       },
     })
-
-    // this.input.focus();
   }
   render() {
-    // const { dispatch } = this.props;
     return(
       <div>
         <div className={styles.head}>
@@ -82,6 +78,11 @@ class MyEditor extends React.Component {
             style={{ marginBottom: 30 }}
             placeholder="文章标签2"
             id="label2"
+          />
+          <input
+            style={{ marginBottom: 30 }}
+            placeholder="文章简介"
+            id="briefInfo"
           />
         </div>
 
