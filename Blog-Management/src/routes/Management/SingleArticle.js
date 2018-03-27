@@ -5,9 +5,9 @@
 
 import React from 'react';
 import { connect } from 'dva';
-import marked from 'marked';
-import highlight from 'highlight.js';
-import { Tag, Button, Card } from 'antd';
+import { Tag, Button, Card, Spin } from 'antd';
+import Loading from 'react-loading-bar';
+import '../../../node_modules/react-loading-bar/dist/index.css';
 import styles from './SingleArticle.less';
 import '../../../node_modules/highlight.js/styles/atom-one-dark.css';
 
@@ -16,9 +16,6 @@ class SingleArticle extends React.Component {
     this.props.dispatch({
       type: 'article/showArticle',
     })
-    marked.setOptions({
-      highlight: code => highlight.highlightAuto(code).value,
-    });
   }
   handleDelete = (Id) => {
     console.log('id111>>>>>>', Id);
@@ -28,10 +25,16 @@ class SingleArticle extends React.Component {
     })
   }
   render() {
-    const { Article } = this.props;
+    const { Article, loading } = this.props;
+    console.log('loading>>>>>>', loading)
     return(
       <div>
+        <Loading
+          show={loading}
+          color="red"
+        />
         {
+          loading === true ? null :
           Article.data === undefined ? null : Article.data.map((item) => (
             item.State === 0 ? null :
             <div key={item.Id} style={{ margin: '10px'}}>
@@ -45,8 +48,7 @@ class SingleArticle extends React.Component {
                     </div>
                   </div>
                   <hr />
-                  {/* <div dangerouslySetInnerHTML={{ __html: marked(item.Content) }}/> */}
-                  <div>{item.brief}</div>
+                  <div>{item.Brief}</div>
                 </div>
                 <div className={styles.tag}>
                   <div>
@@ -76,4 +78,5 @@ class SingleArticle extends React.Component {
 
 export default connect(state => ({
   Article: state.article.Article,
+  loading: state.loading.models.article,
 }))(SingleArticle);

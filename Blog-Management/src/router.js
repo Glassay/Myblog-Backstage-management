@@ -12,7 +12,7 @@ function RouterConfig({ history }) {
     <Router history={history}>
       <Switch>
         <Route path="/login" component={LoginLayout} />
-        <Route path="/main" component={BasicLayout}/>
+        <Route path="/main" component={BasicLayout} />
       </Switch>
     </Router>
   );
