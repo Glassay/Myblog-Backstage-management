@@ -1,6 +1,5 @@
 import dva from 'dva';
 import createLoading from 'dva-loading';
-// import { browserHistory } from 'dva/router';
 import createHistory from 'history/createBrowserHistory';
 import './index.css';
 

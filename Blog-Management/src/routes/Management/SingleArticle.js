@@ -5,8 +5,9 @@
 
 import React from 'react';
 import { connect } from 'dva';
-import { Tag, Button, Card, Spin } from 'antd';
+import { Tag, Button, Card } from 'antd';
 import Loading from 'react-loading-bar';
+
 import '../../../node_modules/react-loading-bar/dist/index.css';
 import styles from './SingleArticle.less';
 import '../../../node_modules/highlight.js/styles/atom-one-dark.css';
@@ -17,6 +18,7 @@ class SingleArticle extends React.Component {
       type: 'article/showArticle',
     })
   }
+
   handleDelete = (Id) => {
     console.log('id111>>>>>>', Id);
     this.props.dispatch({
@@ -24,6 +26,15 @@ class SingleArticle extends React.Component {
       payload: Id,
     })
   }
+
+  handleDelete = (Id) => {
+    console.log('id111>>>>>>', Id);
+    this.props.dispatch({
+      type: 'article/deleteArticle',
+      payload: Id,
+    })
+  }
+
   render() {
     const { Article, loading } = this.props;
     console.log('loading>>>>>>', loading)
@@ -53,7 +64,7 @@ class SingleArticle extends React.Component {
                 <div className={styles.tag}>
                   <div>
                     <Button
-                      type="primary"
+                      type="danger"
                       size="small"
                       className={styles.button}
                       onClick={() => this.handleDelete(item.Id)}
@@ -61,7 +72,6 @@ class SingleArticle extends React.Component {
                   </div>
                   <div>
                     <Button
-                      type="primary"
                       size="small"
                       className={styles.button}
                     >修改</Button>

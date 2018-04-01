@@ -1,12 +1,13 @@
 /**
  * 2018-1-10 Jifeng Cheng
- * management the article of my article
+ * management the articles
  */
 
 import React from 'react';
+import { connect } from 'dva';
 import SingleArticle from './SingleArticle';
 
-export default class ArticleManagement extends React.Component {
+class ArticleManagement extends React.Component {
   render() {
     console.log('测试..........')
     return(
@@ -16,3 +17,7 @@ export default class ArticleManagement extends React.Component {
     )
   }
 }
+
+export default connect(({ article }) => ({
+  ...article,
+}))(ArticleManagement);
