@@ -1,38 +1,21 @@
 /**
+ * 2018-04-01 Jifeng Cheng
+ */
+
+/**
  * 2017-1-10 Jifeng CHeng
  * the markdown editor by marked && simplemde && highlight.js
  */
 
 import React from 'react';
-import { connect } from 'dva';
 import SimpleMDE from 'simplemde'
 import marked from 'marked';
 import highlight from 'highlight.js';
-import styles from './MyEdtor.less';
+import styles from './ModifyArticle.less';
 import '/Users/a8/github/React/Myblog-Backstage-management/Blog-Management/node_modules/highlight.js/styles/atom-one-dark.css';
 import { Button } from 'antd';
 
-class MyEditor extends React.Component {
-  handleSubmit = () => {
-    const inputArticle = {
-      titleInput: document.getElementById('title').value,
-      label1Input: document.getElementById('label1').value,
-      label2Input: document.getElementById('label2').value,
-      briefInfoInput: document.getElementById('briefInfo').value,
-      contentInput: this.smde.value(),
-    }
-    console.log('inputContent......', inputArticle.contentInput)
-
-    const params = {
-      data: inputArticle,
-    }
-
-    this.props.dispatch({
-      type: 'write/articleSubmit',
-      payload: params,
-    })
-  }
-  
+class ModifyArticle extends React.Component {
   componentDidMount() {
     this.smde = new SimpleMDE({
       element: document.getElementById('editor'), 
@@ -96,12 +79,16 @@ class MyEditor extends React.Component {
           <Button
             type="primary"
             size="small"
-            onClick={this.handleSubmit}
-          >发布</Button>
+          >确认修改</Button>
+          <Button
+            type="primary"
+            size="small"
+            className={styles.btnLayout}
+          >取消</Button>
         </div>
       </div>
     )
   }
 }
 
-export default connect(({ write }) => ({ write }))(MyEditor);
+export default ModifyArticle;

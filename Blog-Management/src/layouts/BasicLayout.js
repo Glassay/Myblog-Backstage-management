@@ -6,9 +6,10 @@
 import React from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import { Switch, Route, Link } from 'dva/router';
+
 import MyEditor from '../routes/Article/MyEditor';
 import ArticleManagement from '../routes/Management/ArticleManagement';
-// import marked from 'marked';
+import ModifyArticle from '../routes/Modify/ModifyArticle';
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
@@ -35,6 +36,9 @@ class BasicLayout extends React.Component {
                 <Menu.Item key="2">
                   <Link to="/main/management">管理文章</Link>
                 </Menu.Item>
+                <Menu.Item>
+                  <Link to="/main/modify">修改文章</Link>
+                </Menu.Item>
               </SubMenu>
               <SubMenu key="sub2" title={<span><Icon type="laptop" />主界面信息修改</span>}>
                 <Menu.Item key="1">头部信息</Menu.Item>
@@ -49,6 +53,7 @@ class BasicLayout extends React.Component {
               <Switch>
                 <Route path="/main/editor" render={() => <MyEditor />} />
                 <Route path="/main/management" render={() => <ArticleManagement />} />
+                <Route path="/main/modify" render={() => <ModifyArticle />} />
               </Switch>
             </Content>
           </Layout>

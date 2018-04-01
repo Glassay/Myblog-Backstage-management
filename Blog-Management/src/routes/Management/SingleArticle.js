@@ -5,7 +5,8 @@
 
 import React from 'react';
 import { connect } from 'dva';
-import { Tag, Button, Card } from 'antd';
+import { Tag, Button, Card, message } from 'antd';
+import QueueAnim from 'rc-queue-anim';
 import Loading from 'react-loading-bar';
 
 import '../../../node_modules/react-loading-bar/dist/index.css';
@@ -27,19 +28,15 @@ class SingleArticle extends React.Component {
     })
   }
 
-  handleDelete = (Id) => {
-    console.log('id111>>>>>>', Id);
-    this.props.dispatch({
-      type: 'article/deleteArticle',
-      payload: Id,
-    })
+  handleModify = () => {
+    message.error('功能未实现！')
   }
 
   render() {
     const { Article, loading } = this.props;
     console.log('loading>>>>>>', loading)
     return(
-      <div>
+      <QueueAnim delay={300}>
         <Loading
           show={loading}
           color="red"
@@ -74,6 +71,7 @@ class SingleArticle extends React.Component {
                     <Button
                       size="small"
                       className={styles.button}
+                      onClick={this.handleModify}
                     >修改</Button>
                   </div>
                 </div>
@@ -81,7 +79,7 @@ class SingleArticle extends React.Component {
             </div>
           ))
         }
-      </div>
+      </QueueAnim>
     )
   }
 }
