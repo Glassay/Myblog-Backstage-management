@@ -20,6 +20,13 @@ export async function deleteArticle(payload) {
   })
 }
 
+export async function modifyArticle(payload) {
+  return request({
+    url: '/modify',
+    method: 'post',
+    data: payload,
+  })
+}
 // import axios from 'axios';
 
 // export async function getArticles(payload) {

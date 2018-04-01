@@ -11,9 +11,11 @@ import React from 'react';
 import SimpleMDE from 'simplemde'
 import marked from 'marked';
 import highlight from 'highlight.js';
+import { Button } from 'antd';
+import { connect } from 'dva';
+
 import styles from './ModifyArticle.less';
 import '/Users/a8/github/React/Myblog-Backstage-management/Blog-Management/node_modules/highlight.js/styles/atom-one-dark.css';
-import { Button } from 'antd';
 
 class ModifyArticle extends React.Component {
   componentDidMount() {
@@ -38,14 +40,18 @@ class ModifyArticle extends React.Component {
         });
       },
     })
+    this.node.scrollIntoView();
   }
   render() {
+    const { Article, keys } = this.props;
+    console.log('Article>>>>>.', Article)
     return(
-      <div>
+      Article.data === undefined ? null :
+      <div ref={node => (this.node = node)}>
         <div className={styles.head}>
           <input
             style={{ marginBottom: 30 }}
-            placeholder="标题"
+            defaultValue={Article.data[keys].Title}
             ref={(input) => {this.input = input}}
             id="title"
           />
@@ -54,17 +60,17 @@ class ModifyArticle extends React.Component {
         <div className={styles.head}>
           <input
             style={{ marginBottom: 30 }}
-            placeholder="文章标签1"
+            defaultValue={Article.data[keys].Label1}
             id="label1"
           />
           <input
             style={{ marginBottom: 30 }}
-            placeholder="文章标签2"
+            defaultValue={Article.data[keys].Label2}
             id="label2"
           />
           <input
             style={{ marginBottom: 30 }}
-            placeholder="文章简介"
+            defaultValue={Article.data[keys].Brief}
             id="briefInfo"
           />
         </div>
@@ -72,7 +78,7 @@ class ModifyArticle extends React.Component {
         <div>
           <textarea
             id="editor"
-            placeholder="在此处写文章！"
+            defaultValue={Article.data[keys].Content}
           />
         </div>
         <div>
@@ -91,4 +97,6 @@ class ModifyArticle extends React.Component {
   }
 }
 
-export default ModifyArticle;
+export default connect(({ article }) => ({
+  ...article,
+}))(ModifyArticle);

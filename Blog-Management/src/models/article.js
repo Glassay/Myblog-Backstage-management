@@ -2,9 +2,12 @@
  * 2018-1-14 Jifeng Cheng
  */
 
+import { message } from 'antd';
+import { routerRedux } from 'dva/router';
+
 import { getArticle } from '../services/article';
 import { deleteArticle } from '../services/article';
-import { message } from 'antd';
+import { modifyArticle } from '../services/article';
 
 export default {
   namespace: 'article',
@@ -12,6 +15,8 @@ export default {
   state: {
     Article: [],
     loading: false,
+    keys: null,
+    modifyResult: null,
   },
 
   effects: {
@@ -38,6 +43,19 @@ export default {
         message.success('删除成功!')
       }
     },
+
+    *getModifyInfo({ payload }, { put }) {
+      yield put({
+        type: 'modifyId',
+        payload: payload,
+      });
+      yield put(routerRedux.push('/main/modify'))
+    },
+
+    *modifyArticle({ payload }, { call, put, select }) {
+      const response = yield call(modifyArticle, payload);
+      console.log('modify answer+++++++', response);
+    }
   },
 
   reducers: {
@@ -59,6 +77,13 @@ export default {
       return {
         ...state,
         DeleteId: action.payload,
+      }
+    },
+
+    modifyId(state, action) {
+      return {
+        ...state,
+        keys: action.payload,
       }
     }
   }

@@ -8,9 +8,9 @@ import { connect } from 'dva';
 import SimpleMDE from 'simplemde'
 import marked from 'marked';
 import highlight from 'highlight.js';
+import { Button } from 'antd';
 import styles from './MyEdtor.less';
 import '/Users/a8/github/React/Myblog-Backstage-management/Blog-Management/node_modules/highlight.js/styles/atom-one-dark.css';
-import { Button } from 'antd';
 
 class MyEditor extends React.Component {
   handleSubmit = () => {

@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { connect } from 'dva';
-import { Tag, Button, Card, message } from 'antd';
+import { Tag, Button, Card } from 'antd';
 import QueueAnim from 'rc-queue-anim';
 import Loading from 'react-loading-bar';
 
@@ -28,8 +28,12 @@ class SingleArticle extends React.Component {
     })
   }
 
-  handleModify = () => {
-    message.error('功能未实现！')
+  getModifyId = (id) => {
+    this.props.dispatch({
+      type: 'article/getModifyInfo',
+      payload: id
+    })
+    console.log('id>>>>>', id)
   }
 
   render() {
@@ -43,9 +47,9 @@ class SingleArticle extends React.Component {
         />
         {
           loading === true ? null :
-          Article.data === undefined ? null : Article.data.map((item) => (
+          Article.data === undefined ? null : Article.data.map((item, index) => (
             item.State === 0 ? null :
-            <div key={item.Id} style={{ margin: '10px'}}>
+            <div key={index} style={{ margin: '10px'}}>
               <Card>
                 <div>
                   <div>
@@ -71,7 +75,7 @@ class SingleArticle extends React.Component {
                     <Button
                       size="small"
                       className={styles.button}
-                      onClick={this.handleModify}
+                      onClick={() => this.getModifyId(index)}
                     >修改</Button>
                   </div>
                 </div>

@@ -37,7 +37,7 @@ class BasicLayout extends React.Component {
                   <Link to="/main/management">管理文章</Link>
                 </Menu.Item>
                 <Menu.Item>
-                  <Link to="/main/modify">修改文章</Link>
+                  修改文章
                 </Menu.Item>
               </SubMenu>
               <SubMenu key="sub2" title={<span><Icon type="laptop" />主界面信息修改</span>}>
