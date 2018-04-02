@@ -42,6 +42,22 @@ class ModifyArticle extends React.Component {
     })
     this.node.scrollIntoView();
   }
+
+  handleModify = () => {
+    const modifyResult = {
+      IdInput: document.getElementById('Id').value,
+      titleInput: document.getElementById('title').value,
+      label1Input: document.getElementById('label1').value,
+      label2Input: document.getElementById('label2').value,
+      briefInfoInput: document.getElementById('briefInfo').value,
+      contentInput: this.smde.value(),
+    }
+    console.log('modifyResult>>>>>>>', modifyResult)
+    this.props.dispatch({
+      type: 'article/modifyArticle',
+      payload: modifyResult,
+    })
+  }
   render() {
     const { Article, keys } = this.props;
     console.log('Article>>>>>.', Article)
@@ -51,8 +67,16 @@ class ModifyArticle extends React.Component {
         <div className={styles.head}>
           <input
             style={{ marginBottom: 30 }}
-            defaultValue={Article.data[keys].Title}
+            // type="number"
+            defaultValue={Article.data[keys].Id}
             ref={(input) => {this.input = input}}
+            id="Id"
+          />
+        </div>
+        <div className={styles.head}>
+          <input
+            style={{ marginBottom: 30 }}
+            defaultValue={Article.data[keys].Title}
             id="title"
           />
         </div>
@@ -85,6 +109,7 @@ class ModifyArticle extends React.Component {
           <Button
             type="primary"
             size="small"
+            onClick={this.handleModify}
           >确认修改</Button>
           <Button
             type="primary"

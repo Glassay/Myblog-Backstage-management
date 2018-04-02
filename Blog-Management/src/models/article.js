@@ -37,8 +37,9 @@ export default {
       id.push(payload);
       const response = yield call(deleteArticle, id)
       
-      if(response === 'ErrMysql') {
+      if(response.status === 'ErrMysql') {
         message.error('删除失败！')
+
       } else {
         message.success('删除成功!')
       }
@@ -53,9 +54,26 @@ export default {
     },
 
     *modifyArticle({ payload }, { call, put, select }) {
-      const response = yield call(modifyArticle, payload);
+      console.log('payload>>>>>>>', payload)
+      const params = {
+        id: +payload.IdInput,
+        title: payload.titleInput,
+        label1: payload.label1Input,
+        label2: payload.label2Input,
+        brief: payload.briefInfoInput,
+        content: payload.contentInput,
+      }
+      console.log('params???????', params)
+      console.log('id>>>>>>>', params.id)
+      const response = yield call(modifyArticle, params);
       console.log('modify answer+++++++', response);
-    }
+      if (response.status === 'success') {
+        message.success('asd')
+      } else {
+        message.error('xzc')
+      }
+      // response === 'success' ? message.success('修改成功!') : message.error('修改失败！');
+    },
   },
 
   reducers: {
@@ -84,6 +102,13 @@ export default {
       return {
         ...state,
         keys: action.payload,
+      }
+    },
+
+    modifyInfo(state, action) {
+      return {
+        ...state,
+        modifyResult: action.payload,
       }
     }
   }
