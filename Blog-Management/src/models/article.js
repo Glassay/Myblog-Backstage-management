@@ -41,8 +41,15 @@ export default {
         message.error('删除失败！')
       } else {
         message.success('删除成功!')
-        // yield call(getArticle);
-        // yield call(componentWillMount);
+        const res = yield call(getArticle)
+        console.log('deleteRes>>>>>>', res)
+        yield put({
+          type: 'udpateArticle',
+          payload: res,
+        })
+        // setTimeout(this.setState({
+        //   Article: res
+        // }), 300)
       }
     },
 
@@ -84,10 +91,10 @@ export default {
       }
     },
 
-    updateArticle(state, action) {
+    updateArticle(state, { payload }) {
       return {
         ...state,
-        Article: action.payload,
+        Article: payload.Article.slice(),
       }
     },
 

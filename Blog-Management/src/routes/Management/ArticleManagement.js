@@ -22,7 +22,6 @@ class ArticleManagement extends React.Component {
       type: 'article/deleteArticle',
       payload: Id,
     })
-    this.setState(this.props.Article)
   }
 
   getModifyId = (index) => {
@@ -33,6 +32,7 @@ class ArticleManagement extends React.Component {
   }
   render() {
     const { Article, loading } = this.props;
+    console.log('Article_+_+_+_+_', Article);
     return(
       <QueueAnim delay={300}>
         <Loading
