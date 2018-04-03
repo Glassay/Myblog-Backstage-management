@@ -39,9 +39,10 @@ export default {
       
       if(response.status === 'ErrMysql') {
         message.error('删除失败！')
-
       } else {
         message.success('删除成功!')
+        // yield call(getArticle);
+        // yield call(componentWillMount);
       }
     },
 
@@ -72,7 +73,6 @@ export default {
       } else {
         message.error('xzc')
       }
-      // response === 'success' ? message.success('修改成功!') : message.error('修改失败！');
     },
   },
 
