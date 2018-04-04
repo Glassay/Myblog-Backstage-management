@@ -37,10 +37,11 @@ class MyEditor extends React.Component {
     this.smde = new SimpleMDE({
       element: document.getElementById('editor'), 
       indentWithTabs: false,
-      tabSize: 4,
+      tabSize: 2,
       status: ["autosave", "lines", "words", "cursor"],
       previewRender: function(plainText) {
         return marked(plainText,{
+          // autofocus: true,
           renderer: new marked.Renderer(),
           gfm: true,
           pedantic: false,
