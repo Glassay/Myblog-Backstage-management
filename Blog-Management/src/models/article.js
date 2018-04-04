@@ -20,7 +20,7 @@ export default {
   },
 
   effects: {
-    *showArticle({ payload }, { call, put }) {
+    *showArticle({ payload }, { call, put, select }) {
       // const params = getArticle.data
       console.log('adasdasdsada')
       const response = yield call(getArticle);
@@ -31,25 +31,22 @@ export default {
       })
     },
 
-    *deleteArticle({ payload }, { call, put }) {
+    *deleteArticle({ payload }, { call, put, select }) {
       console.log('payload+++++', payload)
       const id = [];
       id.push(payload);
       const response = yield call(deleteArticle, id)
       
-      if(response.status === 'ErrMysql') {
-        message.error('删除失败！')
-      } else {
-        message.success('删除成功!')
+      if(response.status === 'success') {
+        message.success('删除成功！')
         const res = yield call(getArticle)
         console.log('deleteRes>>>>>>', res)
         yield put({
-          type: 'udpateArticle',
+          type: 'updateArticle',
           payload: res,
         })
-        // setTimeout(this.setState({
-        //   Article: res
-        // }), 300)
+      } else {
+        message.error('删除失败!')
       }
     },
 
@@ -94,7 +91,7 @@ export default {
     updateArticle(state, { payload }) {
       return {
         ...state,
-        Article: payload.Article.slice(),
+        Article: payload,
       }
     },
 
